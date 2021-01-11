@@ -13,5 +13,5 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com",
     packages=setuptools.find_packages(),
-    python_requires='>=3.8',
+    python_requires='>=3.6',
 )
