@@ -24,18 +24,18 @@ def make_3d_spinner(ax, tmpdir="/tmp", output="out.mp4"):
     return call(["ffmpeg", "-r", '20', '-i', image_path, str(output)])
 
 
-def shaded_error_plot(ax, x, y, yerr, label='', color='red'):
+def shaded_error_plot(ax, x, y, y_err, color='red', **kwargs):
     """
     Easily plots X/Y line plot with error as a shaded region around the line.
 
     :param ax: Axis to plot on
     :param x: x data (of dimension m)
     :param y: y data (of dimension m)
-    :param yerr: error in y data (of dimension m)
-    :param label: Optional label for this data series
+    :param y_err: error in y data (of dimension m)
     :param color: Optional color to plot the data series in
+    :param kwargs: Additional keyword arguments to be passed to ax.plot()
     :return: The axis object with the series plotted on it
     """
-    ax.plot(x, y, label=label, c=color)
-    ax.fill_between(x, y-yerr, y+yerr, alpha=0.3, facecolor=color)
+    ax.plot(x, y, c=color, **kwargs)
+    ax.fill_between(x, y - y_err, y + y_err, alpha=0.3, facecolor=color)
     return ax
